@@ -1,12 +1,5 @@
 package permutation
 
-// func main() {
-// 	arr := []string{"1", "2", "3", "4"}
-// 	answers := make([]string, 0)
-// 	generate(&arr, 0, 4, &answers)
-// 	fmt.Println(answers)
-// }
-
 func Permutate(input *[]string, l int, h int, answers *[]string) {
 	array := *input
 	if l == h-1 {
