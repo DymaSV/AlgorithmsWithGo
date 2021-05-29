@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func CheckStr(variants *[]string, str string) []int {
+func Check(variants *[]string, str string) []int {
 	arr := strings.Split(str, "")
 	index := 0
 	results := make([]int, 0)
