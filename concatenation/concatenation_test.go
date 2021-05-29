@@ -18,7 +18,7 @@ func TestCheckConcatenation(t *testing.T) {
 		{[]string{"1", "2", "3", "4"}, "24143424", []int{}},
 	}
 	for _, test := range tests {
-		answers := CheckConcatenation(&test.permutations, test.str)
+		answers := CheckStr(&test.permutations, test.str)
 		for i, v := range test.expected {
 			if answers[i] != v {
 				t.Error(`CheckConcatenation {} expected, {} result,`, v, answers[i])
