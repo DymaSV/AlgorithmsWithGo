@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"../../PermutateAlgorithm/src/permutation"
+	"github.com/DymaSV/algorithms/permutation"
 )
 
 func main() {
