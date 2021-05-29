@@ -1,3 +1,3 @@
-module github.com/DymaSV/algorithms/permutation
+module github.com/DymaSV/AlgorithmsWithGo/permutation
 
 go 1.16

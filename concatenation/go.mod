@@ -1,3 +1,3 @@
-module github.com/DymaSV/algorithms/concatenation
+module github.com/DymaSV/AlgorithmsWithGo/concatenation
 
 go 1.16
