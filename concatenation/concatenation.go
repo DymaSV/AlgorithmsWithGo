@@ -1,63 +1,35 @@
 package concatenation
 
 import (
-	"fmt"
-	"strconv"
 	"strings"
 )
 
-func CheckStr(variants *[]string, str string) []int {
-	arr := *variants
-	arrStr := strings.Split(str, "")
-	var stack Stack
-
-	for i := 0; i < len(arr)-1; i++ {
-		j := 0
-		arrVal := strings.Split(arr[i], "")
-		k := 0
-
-		if arrVal[k] != arrStr[j] {
-			stack.Pop()
-			k = 0
-			j++
-			if j > len(arrStr)-1 {
-				break
+func Check(variants *[]string, str string) []int {
+	variant := *variants
+	capacity := len(str) / len(variant)
+	if capacity == 0 {
+		return []int{}
+	}
+	arrIndex := make([]int, 0, capacity)
+	index := 0
+	equal := false
+	strArr := strings.Split(str, "")
+	j := 0
+	for i := 0; i < len(str); i++ {
+		if strArr[i] == variant[j] {
+			if j == len(variant)-1 && equal {
+				arrIndex[index] = i - len(variant) - 1
+				index++
+			} else {
+				j++
+				equal = true
 			}
 		} else {
-			if k == 0 {
-				stack.Push(strconv.Itoa(j))
-				j++
-				if j > len(arrStr)-1 {
-					if k != len(arrVal[k])-1 {
-						stack.Pop()
-					}
-					break
-				}
-				k++
-			}
+			equal = false
+			j = 0
 		}
 	}
-
-	for len(stack) > 0 {
-		x, y := stack.Pop()
-		if y == true {
-			fmt.Println(x)
-		}
-	}
-	// for _, variant := range *variants {
-	// 	for _, v := range strings.Split(variant, "") {
-	// 		if arr[index] == v {
-	// 			results[resIndex] = index
-	// 			index = index + 1
-	// 			if index == len(str) {
-	// 				return results
-	// 			}
-	// 		} else {
-	// 			index = 0
-	// 		}
-	// 	}
-	// }
-	return []int{2}
+	return arrIndex
 }
 
 type Stack []string
