@@ -4,9 +4,9 @@ import (
 	"strings"
 )
 
-func Check(variants *[]string, str string) []int {
-	variant := *variants
-	capacity := len(str) / len(variant)
+func Check(variant string, str string) []int {
+	arrVariant := strings.Split(variant, "")
+	capacity := len(str) / len(arrVariant)
 	if capacity == 0 {
 		return []int{}
 	}
@@ -16,9 +16,9 @@ func Check(variants *[]string, str string) []int {
 	strArr := strings.Split(str, "")
 	j := 0
 	for i := 0; i < len(str); i++ {
-		if strArr[i] == variant[j] {
-			if j == len(variant)-1 && equal {
-				arrIndex[index] = i - len(variant) - 1
+		if strArr[i] == arrVariant[j] {
+			if j == len(arrVariant)-1 && equal {
+				arrIndex[index] = i - len(arrVariant) - 1
 				index++
 			} else {
 				j++
