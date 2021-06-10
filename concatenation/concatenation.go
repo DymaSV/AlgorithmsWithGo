@@ -6,11 +6,7 @@ import (
 
 func Check(variant string, str string) []int {
 	arrVariant := strings.Split(variant, "")
-	capacity := len(str) / len(arrVariant)
-	if capacity == 0 {
-		return []int{}
-	}
-	arrIndex := make([]int, 0, capacity)
+	var arrIndex []int
 	index := 0
 	equal := false
 	strArr := strings.Split(str, "")
@@ -18,16 +14,26 @@ func Check(variant string, str string) []int {
 	for i := 0; i < len(str); i++ {
 		if strArr[i] == arrVariant[j] {
 			if j == len(arrVariant)-1 && equal {
-				arrIndex[index] = i - len(arrVariant) - 1
+				arrIndex = append(arrIndex, i-(len(arrVariant)-1))
 				index++
+				i++
 			} else {
 				j++
 				equal = true
 			}
 		} else {
+			if equal {
+				i--
+				if i < 0 {
+					i = 0
+				}
+			}
 			equal = false
 			j = 0
 		}
+	}
+	if arrIndex == nil {
+		return []int{}
 	}
 	return arrIndex
 }

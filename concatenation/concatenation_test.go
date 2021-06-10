@@ -8,17 +8,17 @@ import (
 // Check arrayr count
 func TestCheckConcatenation(t *testing.T) {
 	var tests = []struct {
-		permutations []string
-		str          string
-		expected     []int
+		permutation string
+		str         string
+		expected    []int
 	}{
-		{[]string{"1", "2", "3"}, "aa1234", []int{2}},
-		{[]string{"1", "2", "3"}, "2134aa", []int{0}},
-		{[]string{"1", "2", "3"}, "aa4321", []int{3}},
-		{[]string{"1", "2", "3"}, "24143424", []int{}},
+		{"123", "111123", []int{3}},
+		{"123", "21123a", []int{2}},
+		{"123", "a12321", []int{1}},
+		{"123", "24143424", []int{}},
 	}
 	for _, test := range tests {
-		answers := Check(&test.permutations, test.str)
+		answers := Check(test.permutation, test.str)
 		for i, v := range test.expected {
 			if answers[i] != v {
 				t.Error(`CheckConcatenation {} expected, {} result,`, v, answers[i])
