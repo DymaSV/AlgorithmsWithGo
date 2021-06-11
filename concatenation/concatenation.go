@@ -8,6 +8,7 @@ func Check(variant string, str string) []int {
 	arrVariant := strings.Split(variant, "")
 	var arrIndex []int
 	equal := false
+	equalIndex := -1
 	strArr := strings.Split(str, "")
 	j := 0
 	for i := 0; i < len(str); i++ {
@@ -17,12 +18,16 @@ func Check(variant string, str string) []int {
 				j = 0
 				i++
 			} else {
+				if equalIndex == -1 {
+					equalIndex = i + 1
+				}
 				j++
 				equal = true
 			}
 		} else {
 			if equal {
-				i--
+				i = equalIndex
+				equalIndex = -1
 				if i < 0 {
 					i = 0
 				}
